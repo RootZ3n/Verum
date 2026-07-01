@@ -151,7 +151,9 @@ app.get("/api/meta/logs", (req, res) => {
 app.use("/api", apiRouter);
 app.use(apiErrorHandler);
 
-app.use(express.static(path.join(__dirname, "public")));
+// Serve the legacy dashboard's assets, but NOT its index.html at "/" — the
+// world engine is the front door now (see the "/" route below).
+app.use(express.static(path.join(__dirname, "public"), { index: false }));
 app.use("/reports", express.static(path.join(process.cwd(), "reports")));
 
 // The Investigation — Pehverse world engine (noir private-investigator UI).
@@ -169,7 +171,13 @@ app.get("/bridge/runs", (_req, res) => {
   res.sendFile(path.join(__dirname, "public", "bridge-runs.html"));
 });
 
+// Front door = the Investigation world map (noir world engine in ui/).
 app.get("/", (_req, res) => {
+  res.redirect("/world/");
+});
+
+// The legacy "Adversarial Fracture Engine" dashboard, kept reachable.
+app.get("/classic", (_req, res) => {
   res.sendFile(path.join(__dirname, "public", "index.html"));
 });
 
