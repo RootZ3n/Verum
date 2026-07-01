@@ -206,12 +206,16 @@
   }
 
   function enhancePanels() {
-    const panels = doc.querySelectorAll(".peh-panel:not([data-kk-enh]), .peh-tile:not([data-kk-enh])");
+    // The modern shell renders live panels as floating windows (.peh-ws-window
+    // → .peh-ws-title / .peh-ws-body) and as Voltron dashboard tiles
+    // (.peh-dash-tile → .peh-dash-tile-title / .peh-dash-tile-body). Both carry
+    // the panel's title text, which maps to a workspace defId via TITLE_TO_DEF.
+    const panels = doc.querySelectorAll(".peh-ws-window:not([data-kk-enh]), .peh-dash-tile:not([data-kk-enh])");
     panels.forEach((panel) => {
-      const titleEl = panel.querySelector(".peh-panel-title");
+      const titleEl = panel.querySelector(".peh-ws-title, .peh-dash-tile-title");
       const defId = titleEl ? TITLE_TO_DEF[titleEl.textContent.trim()] : null;
       if (!defId || !Scenes.has(defId)) return;
-      const body = panel.querySelector(".peh-panel-body");
+      const body = panel.querySelector(".peh-ws-body, .peh-dash-tile-body");
       if (!body) return;
       panel.setAttribute("data-kk-enh", "1");
       const hit = cache.get(defId);

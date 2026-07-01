@@ -42,7 +42,8 @@
   // ── Overlay markup ─────────────────────────────────────────────────
   function overlayHTML() {
     var p = (typeof pehActiveProduct === "function") ? pehActiveProduct() : null;
-    var mascot = (p && p.mascotArt) ? p.mascotArt : "assets/peh-kokuli.png";
+    var mascot = (typeof pehMascotSrc === "function") ? pehMascotSrc()
+      : ((p && p.mascotArt) ? p.mascotArt : "assets/peh-kokuli.png");
     return '<div class="peh-onboard" id="peh-onboard" role="dialog" aria-modal="true" aria-label="Welcome to Kokuli">' +
       '<div class="peh-onboard-card">' +
         '<img class="peh-onboard-img" src="' + esc(mascot) + '" alt="Pehlichi — your guide">' +
