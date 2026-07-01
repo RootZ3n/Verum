@@ -78,7 +78,7 @@
     bar.id = "kk-chrome";
     bar.innerHTML =
       `<span id="kk-dot" title="Kokuli server status"></span><span id="kk-status">checking…</span>` +
-      `<input id="kk-cmd" placeholder="Give Kokuli an order —  help · run <id> · suite <category> · go <area>" autocomplete="off" spellcheck="false">` +
+      `<input id="kk-cmd" placeholder="Give Peh an order —  help · run <id> · suite <category> · go <area>" autocomplete="off" spellcheck="false">` +
       `<button id="kk-jbtn" type="button">Journal</button>`;
     doc.body.appendChild(bar);
 
