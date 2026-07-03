@@ -24,8 +24,8 @@ importers:
         specifier: ^11.0.1
         version: 11.1.0
       velum-ai:
-        specifier: file:../velum
-        version: file:../velum
+        specifier: file:./vendor/velum-ai
+        version: file:vendor/velum-ai
       zod:
         specifier: ^3.24.1
         version: 3.25.76
@@ -572,8 +572,8 @@ packages:
     resolution: {integrity: sha512-BNGbWLfd0eUPabhkXUVm0j8uuvREyTh5ovRa/dyow/BqAbZJyC+5fU+IzQOzmAKzYqYRAISoRhdQr3eIZ/PXqg==}
     engines: {node: '>= 0.8'}
 
-  velum-ai@file:../velum:
-    resolution: {directory: ../velum, type: directory}
+  velum-ai@file:vendor/velum-ai:
+    resolution: {directory: vendor/velum-ai, type: directory}
     engines: {node: '>=18'}
     hasBin: true
 
@@ -1151,7 +1151,7 @@ snapshots:
 
   vary@1.1.2: {}
 
-  velum-ai@file:../velum: {}
+  velum-ai@file:vendor/velum-ai: {}
 
   which@2.0.2:
     dependencies:
